@@ -1,22 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
 import re
-
-
-# In[2]:
-
 
 res_list_con = []
 res_list_spl = []
 res_list_typo = []
-
-
-# In[3]:
-
 
 def levenshtein(s1, s2):
     if len(s1) < len(s2):
@@ -37,9 +26,6 @@ def levenshtein(s1, s2):
     return previous_row[-1]
 
 
-# In[4]:
-
-
 def cosine(first, second):
 
     ln = len(first)
@@ -57,39 +43,10 @@ def cosine(first, second):
     return count/float(ln)
 
 
-# In[5]:
-
-
 def replace_list(text, r_list, c):
     for r in r_list:
             text = text.replace(r, c)
     return text
-
-
-# In[6]:
-
-
-'''
-def preprocess(s):
-    #s = re.sub(' +', ' ', s)
-    s = s.replace("."," ").replace(","," ").replace("?"," ").replace("!"," ").replace("\"","").replace("-","").replace("("," ").replace(")"," ").replace(";"," ").replace(":"," ").replace("/"," ").replace("+"," ").replace("%"," ").replace("_"," ").replace("&", " ").replace("[", " ").replace("]", " ").replace("#", " ")
-    s = s.replace("~", "").replace("*", "").replace("<", "").replace(">", "").replace("^", "").replace("¦", "")
-    s = s.replace("´", "'")
-    s = s.replace("À", "A").replace("Â", "A").replace("Ä", "A").replace("", "A").replace("")
-    s = s.replace("È","E").replace("É", "E").replace("Ê", "E").replace("Ë", "E")
-    s = s.replace("Ì", "İ").replace("Í", "İ").replace("Î", "İ").replace("Ï", "İ")
-    s = s.replace("Ñ", "N")
-    s = s.replace("Ò", "Ö").replace("Ô", "Ö").replace("Õ", "Ö")
-    s = s.replace("Ù", "Ü").replace("Ú", "Ü").replace("Û", "Ü")
-    s = s.replace("×", "X")
-    s = re.sub(" \d+", " ", s)
-    s = re.sub(' +', ' ', s).strip()
-
-    return s
-'''
-
-
-# In[7]:
 
 
 def preprocess(s):
@@ -101,17 +58,6 @@ def preprocess(s):
     _o = ["Ȫ", "Ó", "Ò", "Ô", "Ố", "Ồ", "Ổ", "Ỗ", "Ộ", "Ǒ", "Ő", "Ŏ", "Ȏ", "Ȯ", "Ȱ", "Ọ", "Ɵ", "Ơ", "Ớ", "Ờ", "Ỡ", "Ợ", "Ở", "Ỏ", "Ō", "Ṓ", "Ṑ", "Õ", "Ȭ", "Ṍ", "Ṏ", "Ǫ", "Ȍ", "Ǭ"]
     _s = ["Ś", "Ṡ", "Ṩ", "Ṥ", "Ꞩ", "Ŝ", "Ṧ", "Š", "Ş", "Ș", "ᶊ", "Ȿ", "ᵴ", "ᶳ"]
     n = ["Ń", "Ñ", "Ň", "Ǹ", "Ṅ", "Ṇ", "Ņ", "Ṉ", "Ṋ", "Ꞥ", "ᵰ", "ᶇ"]
-    
-    '''
-    a = ["å","ǻ","ḁ","ă","ặ","ắ","ằ","ẳ","ẵ","ȃ","â","ậ","ấ","ầ","ẫ","ẩ","ả","ǎ","ⱥ","ȧ","ǡ","ạ","ä","ǟ","à","ȁ","á","ā","ã","ą"]
-    _c = ["ć","ĉ","č","ċ","ḉ","ƈ","ȼ","ç"]
-    e = ["ĕ","ḝ","ȇ","ê","ề","ế","ể","ễ","ệ","ẻ","ḙ","ě","ɇ","ė","ẹ","ë","è","ȅ","é","ē","ḕ","ḗ","ẽ","ḛ","ę","ȩ"]
-    i = ["i̇", "i̇","i̇","ị","ĭ","î","ǐ","ɨ","ï","ḯ","í","ì","ȉ","į","ī","ᶖ","ỉ","ȋ","ĩ","ḭ"]
-    _u = ["ŭ","ǜ","ǘ","ǚ","ǖ","ú","ù","û","ǔ","ȗ","ű","ư","ứ","ừ","ử","ự","ữ","ủ","ū","ṻ","ũ","ṹ","ȕ","ů"]
-    _o = ["ȫ","ó","ò","ô","ố","ồ","ổ","ỗ","ộ","ǒ","ő","ŏ","ȏ","ȯ","ȱ","ọ","ɵ","ơ","ớ","ờ","ỡ","ợ","ở","ỏ","ō","ṓ","ṑ","õ","ȭ","ṍ","ṏ","ǫ","ȍ","ǭ"]
-    _s = ["ś","ṡ","ṩ","ṥ","ꞩ","ŝ","ṧ","š","ş","ș","ᶊ","ȿ","ᵴ","ᶳ"]
-    n = ["ń","ñ","ň","ǹ","ṅ","ṇ","ņ","ṉ","ṋ","ꞥ","ᵰ","ᶇ"]
-    '''
     
     x = ["×"]
     aps = ["`", "´"]
@@ -140,9 +86,6 @@ def preprocess(s):
     return s
 
 
-# In[8]:
-
-
 def get_space_index_list(s):
     space_index_list = []
     count = 0
@@ -154,21 +97,12 @@ def get_space_index_list(s):
     return space_index_list
 
 
-# In[9]:
-
-
 def remove_character_at(s, index):
     return {'generated_sentecece':s[0: index:] + s[index + 1::], 'original_words':s[0: index:].split()[-1] + " " + s[index + 1::].split()[0]}
 
 
-# In[10]:
-
-
 def remove_character_at_v2(s, index):
     return {'generated_sentecece':s[0:index:].split()[-1] + s[index+1:].split()[0], 'original_words':s[0:index:].split()[-1] + " " + s[index+1:].split()[0], 'index':index}
-
-
-# In[11]:
 
 
 def generate_grams(s):
@@ -179,9 +113,6 @@ def generate_grams(s):
         gram_list.append(remove_character_at_v2(s, space_index))
 
     return gram_list
-
-
-# In[12]:
 
 
 def remove_found_words(right_sentece, wrong_sentence, res_list):
@@ -195,9 +126,6 @@ def remove_found_words(right_sentece, wrong_sentence, res_list):
     wrong_sentence = re.sub(' +', ' ', wrong_sentence).strip()
 
     return right_sentece, wrong_sentence
-
-
-# In[13]:
 
 
 def get_mistyped_word_list_v2(s2_s, s1_s, n=10):
@@ -237,9 +165,6 @@ def get_mistyped_word_list_v2(s2_s, s1_s, n=10):
         current_index += 1
 
     return res
-
-
-# In[14]:
 
 
 def get_mis_concatted_word_list_v2(right_sentece, wrong_sentece, n=10):
@@ -288,9 +213,6 @@ def get_mis_concatted_word_list_v2(right_sentece, wrong_sentece, n=10):
     return res_list
 
 
-# In[15]:
-
-
 def get_mis_splitted_word_list_v2(right_sentece, wrong_sentece, n=10):
     gram_list = generate_grams(wrong_sentece)
     res_list = []
@@ -337,9 +259,6 @@ def get_mis_splitted_word_list_v2(right_sentece, wrong_sentece, n=10):
     return res_list
 
 
-# In[16]:
-
-
 def get_mistyped_word_list(s2_s, s1_s):
 
     s1_s = s1_s.split()
@@ -368,9 +287,6 @@ def get_mistyped_word_list(s2_s, s1_s):
     return res
 
 
-# In[17]:
-
-
 def get_mis_concatted_word_list(right_sentece, wrong_sentece):
     gram_list = generate_grams(right_sentece)
     res_list = []
@@ -392,9 +308,6 @@ def get_mis_concatted_word_list(right_sentece, wrong_sentece):
         if max_lev_score <= 0 and max_cos_score >= 1:
             res_list.append(wrong + " - " + corrected)
     return res_list
-
-
-# In[18]:
 
 
 def get_mis_splitted_word_list(right_sentece, wrong_sentece):
@@ -430,7 +343,6 @@ def insert_mis_splitted_words(w1, w2):
 
 def insert_mistyped_words(w1, w2):
     return
-
 
 
 def assign_input_sentences(sen1, sen2, concat_id, count):
@@ -475,7 +387,6 @@ def assign_input_sentences(sen1, sen2, concat_id, count):
     #print("*****")
 
     return
-
 
 
 from datameer_api.util import datameer_util as dmu
